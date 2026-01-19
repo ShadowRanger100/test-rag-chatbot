@@ -1,38 +1,43 @@
+# 📄 LLM-Based Document Question Answering System
+
+## 📌 Overview
+This project is a local document question-answering system that allows users to upload PDF files and query their contents using a large language model. The application focuses on retrieval-based question answering by combining vector search with controlled LLM responses.
+
+The system is designed to demonstrate document processing, semantic search, and LLM integration using a fully local setup.
+
 ---
 
-# Local PDF Chatbot
+## 🛠 Tools & Technologies
+- Python  
+- Streamlit  
+- LM Studio (local LLM inference)  
+- FAISS (vector similarity search)  
+- PyPDF2  
+- NumPy  
+- LangChain Text Splitters  
 
-## Overview
+---
 
-This app lets you upload a PDF and ask questions about its content. It uses Streamlit for the interface, LM Studio for embeddings and responses, and FAISS for finding the most relevant parts of the document.
+## ⚙️ System Architecture
+1. A PDF document is uploaded through the Streamlit interface  
+2. Text is extracted and split into smaller chunks  
+3. Each chunk is converted into vector embeddings using a local embedding model  
+4. Embeddings are stored in a FAISS index for efficient similarity search  
+5. User queries are matched against relevant document chunks  
+6. Retrieved context is passed to a local LLM to generate responses  
 
-## How It Works
+---
 
-1. Upload a PDF from the sidebar.
-2. The text is extracted and split into chunks.
-3. Each chunk is converted to an embedding using your LM Studio embedding model.
-4. A FAISS index stores these embeddings for fast search.
-5. When you ask a question, the app finds the closest matching chunks and sends them to your LM Studio chat model to generate an answer.
+## 🔍 Key Features
+- Local, offline-friendly document analysis  
+- Vector-based semantic search using FAISS  
+- Retrieval-augmented responses to reduce hallucinations  
+- Simple and intuitive UI built with Streamlit  
 
-## Requirements
+---
 
-Install the needed libraries:
+## 🚀 How to Run the Application
 
-```
+### Install Dependencies
+```bash
 pip install streamlit PyPDF2 numpy requests faiss-cpu langchain-text-splitters
-```
-
-## LM Studio Setup
-
-* Load an embedding model (for example: nomic-embed-text).
-* Load a chat model (for example: phi-3-mini or mistral).
-* Turn on the local server.
-* Update the URLs in the script if your LM Studio runs on a different IP.
-
-## Run the App
-
-```
-streamlit run chatbot.py
-```
-
-Upload a PDF and start asking questions.
